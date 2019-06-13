@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="col-sm-12">
+    <div class="col-md-9">
+      <h2>Upcoming Movies List</h2>
+    </div>
+    <div class="col-md-3 text-right hidden-sm hidden-xs">
+      <i class="tableIcon" (click)="listandGridView('grid')"></i>
+      <i class="listIcon" (click)="listandGridView('list')"></i>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <hr>
+  </div>
+  <div class="col-sm-12 text-center loader" *ngIf="showspinner">
+    <app-loading></app-loading>
+  </div>
+
+  <div [ngClass]="{'col-md-12' : listView, 'col-md-6': !listView}" *ngFor="let movies of listOfMovies">
+    <app-movie-card [movie]="movies"></app-movie-card>
+  </div>
+
+  <div class="col-xs-12 col-12 text-right">
+    <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="10" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [boundaryLinks]="true" (pageChanged)="pageChanged($event)" [itemsPerPage]="20"></pagination>
+  </div>
+</div>

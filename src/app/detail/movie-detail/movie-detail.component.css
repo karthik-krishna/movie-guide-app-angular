@@ -1,0 +1,70 @@
+
+.poster-in-detail{
+    position: absolute;
+    left: 0;
+    top: -100px;
+}
+
+.bg-detail{
+    border-radius: 3px;
+    font-size: 16px;
+    padding:15px;
+}
+
+.heading{
+    padding: 10px;
+    border-radius: 3px;
+}
+.movie-title{
+    position: absolute;
+    top:-100px;
+    font-style: italic;
+    padding: 15px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 3px;
+}
+.details-in-list li{
+    margin-bottom: 10px;
+    word-break: break-all;
+}
+.panel-heading {
+    font-size: 20px;
+    font-style: italic;
+}
+.panel{
+    border: 0;
+    margin-bottom: 0px;
+}
+.panel-body {
+   padding: 0px;
+}
+.mb-2{
+    margin-bottom: 30px;
+}
+
+.castDiv{
+    width:160px;
+    float: left;
+    margin:15px 5px;
+}
+.imgCast{
+    width:80px;
+    height:80px;
+}
+
+.overflow{
+    overflow: auto;
+}
+.showinslider{
+    width: max-content;
+}
+
+@media screen and (max-width: 768px) {
+    .movie-title{
+        position: initial;
+        width:100%;
+        padding: 10px 0px;
+        background:none;
+        padding-top:80px
+    }
+}

@@ -1,0 +1,113 @@
+<div class="container-fluid ">
+  <div class="bg-image row hidden-xs"
+    [style.background-image]="'url('+base+'/w1400_and_h450_face'+detail.backdrop_path+')'"></div>
+  <div class="bg-image row visible-xs"
+    [style.background-image]="'url('+base+'/w500_and_h282_face'+detail.backdrop_path+')'"></div>
+</div>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="col-sm-3 text-center">
+        <img [src]="base+'/w200/'+detail.poster_path" onError="this.src='https://via.placeholder.com/200x300'"
+          alt="{{detail.original_title || ''}}" class="img-thumbnail poster-in-detail hidden-xs">
+        <img [src]="base+'/w116_and_h174_face/'+detail.poster_path"
+          onError="this.src='https://via.placeholder.com/200x300'" alt="{{detail.original_title || ''}}"
+          class="img-thumbnail poster-in-detail visible-xs">
+
+      </div>
+      <div class="col-sm-9 bg-detail">
+        <div class="movie-title">
+          <b>{{detail.original_title || ''}} <small class="text-muted text-sm">{{detail.tagline}}</small>
+            <br>
+          </b>
+          <span *ngFor="let genre of detail.genres;let i=index">
+            {{genre.name}} <span *ngIf="i<detail.genres.length-1">, </span>
+          </span>
+        </div>
+
+        <p>{{detail.overview || '' }}</p>
+        <div class="text-left">
+          <li>User Score : {{detail.vote_average*10}}% out of <b>{{detail.vote_count}}</b> user votes <app-progressbar
+              [userScore]="detail.vote_average"></app-progressbar>
+          </li>
+        </div>
+        <div class="col-sm-12">
+          <ul class="details-in-list">
+            <li *ngIf="detail.homepage"><a href="{{detail.homepage}}" target="_blank">{{detail.homepage}}</a></li>
+            <li><b>Original Language : </b>{{detail.original_language || '' }}</li>
+            <li><b>Release Date : </b>{{detail.release_date || '' }}</li>
+            <li><b>Languages Spoken :</b> <span *ngFor="let language of detail.spoken_languages">{{language.name}},
+              </span>
+            </li>
+            <li><b>Total Budget :</b> {{detail.budget | currency:'USD'}}</li>
+            <li><b>Revenue :</b> {{detail.revenue | currency:'USD'}}</li>
+            <li><b>Production Companies :</b> <span *ngFor="let company of detail.production_companies
+                  ">{{company.name}},
+              </span></li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Cast and Crew</h3>
+      <div class="col-md-12 mb-2 overflow">
+        <h4>Cast</h4>
+        <div class="col-md-12 card showinslider">
+          <div class="castDiv text-center" *ngFor="let person of cast">
+            <img [src]="base+'/w92'+person.profile_path" class="imgCast img-circle"
+              onError="this.src='https://via.placeholder.com/80x80'" alt="{{person.name || ''}}">
+            <div class="col-md-12">
+              <p>{{person.character}}</p>
+              <p>{{person.name}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 mb-2 overflow">
+          <h4>Crew</h4>
+          <div class="col-md-12 card showinslider">
+            <div class="castDiv text-center" *ngFor="let person of crew">
+              <img [src]="base+'/w92'+person.profile_path" class="imgCast img-circle"
+                onError="this.src='https://via.placeholder.com/80x80'" alt="{{person.name || ''}}">
+              <div class="col-md-12">
+                <p>{{person.job}}</p>
+                <p>{{person.name}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <tabset [justified]="true">
+        <tab heading="Trailers" id="tab1" (selectTab)="onSelect($event)">
+          <div class="col-sm-12 mt">
+            <h3 class="heading"></h3>
+            <div class="col-sm-6" *ngFor="let item of trailers">
+              <iframe width="100%" height="300" [src]="getembededUrl(item)" frameborder="0"
+                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+          </div>
+        </tab>
+
+        <tab heading="Reviews &amp; Critics" (selectTab)="onSelect($event)">
+          <div class="col-sm-12 mt">
+            <app-review *ngIf="showReview" [movieId]="movieId"></app-review>
+          </div>
+        </tab>
+
+        <tab heading="Similar Movies" (selectTab)="onSelect($event)">
+          <h3 class="heading"></h3>
+          <div class="col-sm-3 text-center" *ngFor="let movie of similarMovies">
+            <a [routerLink]="['/movie-detail/'+movie.id]"><img [src]="base+'/w200'+movie.poster_path"
+                class="img-thumbnail" [alt]="movie.original_title">
+              <br>
+              <p></p>
+            </a>
+          </div>
+          <div class="col-sm-12 text-center" *ngIf="similarMovies && similarMovies.length==0">
+            <p>None</p>
+          </div>
+        </tab>
+      </tabset>
+    </div>
+  </div>
+</div>

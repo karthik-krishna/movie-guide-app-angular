@@ -1,0 +1,12 @@
+<div class="">
+    <h3 class="heading"></h3>
+    <div class="col-sm-12 reviewBox" *ngFor="let review of reviewList">
+      <p><a href="{{review.url}}">A review by {{review.author}}</a></p>
+      <blockquote>
+        {{review.content}}
+      </blockquote>
+    </div>
+    <div class="col-sm-12 text-center" *ngIf="reviewList && reviewList.length==0">
+      <p>None</p>
+    </div>
+  </div>

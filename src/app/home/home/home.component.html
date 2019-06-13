@@ -1,0 +1,47 @@
+<div class="bg-image col-sm-12">
+  <div class="container">
+    <div class="jumbotron mt-15 card">
+      <form #form="ngForm" (ngSubmit)="submitSearch()">
+        <div class="input-group">
+          <label for="searchMovie"></label>
+          <input type="text" id="searchMovie" class="form-control" name="searchKey" placeholder="Search movie by keyword"
+            [(ngModel)]="searchKey" />
+          <div class="input-group-btn">
+            <button role="button" class="btn btn-default" type="submit">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="col-md-12 mt">
+  <div class="container">
+    <div class="col-md-12">
+        <div class="col-md-9"><h2> {{nowplaying ? 'Now Playing' : 'Movies List Based On Your Search'}}</h2></div>
+        <div class="col-md-3 text-right hidden-sm hidden-xs">
+          <i class="tableIcon" (click)="listandGridView('grid')"></i>
+          <i class="listIcon" (click)="listandGridView('list')"></i>
+        </div>
+    </div>    
+    <div class="col-md-12">
+      <hr>
+    </div>
+
+    <div class="col-sm-12 text-center" *ngIf="showspinner">
+      <app-loading></app-loading>
+    </div>
+
+    <div [ngClass]="{'col-md-12' : listView, 'col-md-6': !listView}" *ngFor="let movies of listOfMovies">
+      <app-movie-card [movie]="movies"></app-movie-card>
+    </div>
+
+    <div class="col-xs-12 col-12 text-right" *ngIf="nowplaying">
+      <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="10" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [boundaryLinks]="true" (pageChanged)="pageChanged($event)" [itemsPerPage]="20"></pagination>
+    </div>
+    <div class="col-xs-12 col-12 text-right" *ngIf="!nowplaying">
+      <pagination [totalItems]="totalItems" [(ngModel)]="currentPageSearch" [maxSize]="10" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [boundaryLinks]="true" (pageChanged)="pageChanged($event)" [itemsPerPage]="20"></pagination>
+    </div>
+  </div>
+</div>
