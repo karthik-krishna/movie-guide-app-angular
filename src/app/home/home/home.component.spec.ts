@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { By } from '@angular/platform-browser';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -49,6 +50,14 @@ describe('HomeComponent', () => {
     }else{
       expect(component.listView).toBeFalsy();
     }
+  });
+
+  it('should hide contents if showspinner is false', () => {
+    component.ngOnInit();
+    setTimeout(() => {
+      fixture.detectChanges();
+      expect(fixture.debugElement.query(By.css('.loader'))).toBeUndefined();
+    }, 1510); 
   });
 
 

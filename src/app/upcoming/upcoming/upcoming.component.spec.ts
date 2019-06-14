@@ -49,7 +49,7 @@ describe('UpcomingComponent', () => {
     }
   });
 
-  it('should hide contents if show is false', () => {
+  it('should hide contents if showspinner is false', () => {
     component.ngOnInit();
     setTimeout(() => {
       fixture.detectChanges();

@@ -38,6 +38,7 @@ export class MovieDetailComponent implements OnInit {
     }
     this.getCastandCrew()
   }
+  
   getumovieDetail() {
     this.showspinner = true;
     this.detailService.getMovieDetails(this.movieId).subscribe((resp) => {
