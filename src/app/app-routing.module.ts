@@ -4,22 +4,22 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+    loadChildren: './home/home.module#HomeModule'
   },
   {
     path: 'upcoming',
-    loadChildren: () => import('./upcoming/upcoming.module').then(m => m.UpcomingModule)
+    loadChildren: './upcoming/upcoming.module#UpcomingModule'
   },
   {
     path: 'movie-detail/:id',
-    loadChildren: () => import('./detail/detail.module').then(m => m.DetailModule)
+    loadChildren: './detail/detail.module#DetailModule'
   },
   {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
   }
-];;
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

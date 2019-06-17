@@ -8,7 +8,9 @@
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -26,7 +28,10 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              
+            ],
+            "es5BrowserSupport": true
           },
           "configurations": {
             "production": {
@@ -85,7 +90,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets",
