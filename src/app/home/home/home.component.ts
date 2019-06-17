@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { ListingService } from './listing-component.service';
 import { ApiServiceService } from 'src/app/services/baseUrl';
 
