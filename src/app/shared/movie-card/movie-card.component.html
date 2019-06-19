@@ -1,6 +1,7 @@
 <div class="media card" *ngIf="movie">
   <img [src]="base+'/w200/'+movie.poster_path" class="visible-xs width100"
-    onError="this.src='https://via.placeholder.com/200x300'" [routerLink]="['/movie-detail/'+movie.id]" alt="{{movie.original_title}}" >
+    onError="this.src='https://via.placeholder.com/200x300'" [routerLink]="['/movie-detail/'+movie.id]"
+    alt="{{movie.original_title}}">
   <div class="media-left">
     <img [src]="base+'/w200/'+movie.poster_path" class="media-object hidden-xs"
       onError="this.src='https://via.placeholder.com/200x300'" alt="{{movie.original_title}}">
@@ -15,8 +16,8 @@
     <ul class="list-of-details">
       <li>Is <b>A</b> Rated : <i
           [ngClass]="[!movie.adult ? 'fa fa-times' : '' , movie.adult ? 'fa fa-check'  : '' ]"></i></li>
-      <li>User Score : {{movie.vote_average*10}}% out of <b>{{movie.vote_count}}</b> user votes <app-progressbar
-          [userScore]="movie.vote_average"></app-progressbar>
+      <li>User Score : {{movie.vote_average*10}}% out of <b>{{movie.vote_count}}</b> user votes
+        <app-progressbar [userScore]="movie.vote_average"></app-progressbar>
       </li>
     </ul>
     <div class="moreinfo">

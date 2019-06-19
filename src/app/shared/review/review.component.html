@@ -9,4 +9,7 @@
     <div class="col-sm-12 text-center" *ngIf="reviewList && reviewList.length==0">
       <p>None</p>
     </div>
+    <div class="col-xs-12 col-12 text-right">
+      <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="10" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [boundaryLinks]="true" (pageChanged)="pageChanged($event)" [itemsPerPage]="20"></pagination>
+    </div>
   </div>

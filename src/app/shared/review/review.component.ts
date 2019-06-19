@@ -8,11 +8,13 @@ import { ReviewService } from './review.service';
 })
 export class ReviewComponent implements OnInit {
   reviewList: any=[];
+  totalItems: number;
 
   constructor(private reviewservice: ReviewService) { }
 
   @Input() movieId:Number;
-  page:Number=1;
+  currentPage = 1;
+  page: number = 1;
 
  
   ngOnInit() {
@@ -26,6 +28,7 @@ export class ReviewComponent implements OnInit {
   getmoviewReview(movieId,page){
     this.reviewservice.getMovieReview(movieId,page).subscribe((resp)=>{
       let list = JSON.parse(JSON.stringify(resp));
+      this.totalItems=list.total_pages
       this.reviewList=list.results;
     })
   }

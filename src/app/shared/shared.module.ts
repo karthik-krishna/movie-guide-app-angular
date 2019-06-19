@@ -6,12 +6,16 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { ReviewComponent } from './review/review.component';
 import { LoadingComponent } from './loading/loading.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [MovieCardComponent, ProgressbarComponent, ReviewComponent, LoadingComponent],
   imports: [
     CommonModule,
-    SharedRoutingModule
+    SharedRoutingModule,
+    FormsModule,
+    PaginationModule.forRoot()
   ],
   exports:[MovieCardComponent, ProgressbarComponent, ReviewComponent, LoadingComponent]
 })

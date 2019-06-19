@@ -57,7 +57,6 @@ export class MovieDetailComponent implements OnInit {
   }
 
   onSelect(data: TabDirective) {
-    console.log(data)
     if(data.heading=='Similar Movies'){
       this.getsimilarMovies()
     }else if(data.heading=='Reviews & Critics'){

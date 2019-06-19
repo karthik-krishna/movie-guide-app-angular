@@ -23,8 +23,7 @@
         ]
       }
     }
-  ],
-  "dataGroups": [
+  ],"dataGroups": [
     {
       "name": "api-performance",
       "urls": [
