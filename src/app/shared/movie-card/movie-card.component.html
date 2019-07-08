@@ -1,13 +1,13 @@
 <div class="media card" *ngIf="movie">
   <img [src]="base+'/w200/'+movie.poster_path" class="visible-xs width100"
-    onError="this.src='https://via.placeholder.com/200x300'" [routerLink]="['/movie-detail/'+movie.id]"
+    onError="this.src='https://via.placeholder.com/200x300'" [routerLink]="['/detail/movie-detail/'+movie.id]"
     alt="{{movie.original_title}}">
   <div class="media-left">
     <img [src]="base+'/w200/'+movie.poster_path" class="media-object hidden-xs"
       onError="this.src='https://via.placeholder.com/200x300'" alt="{{movie.original_title}}">
   </div>
   <div class="media-body hidden-xs">
-    <h4 class="media-heading"><a [routerLink]="['/movie-detail/'+movie.id]">{{movie.original_title}}</a> :
+    <h4 class="media-heading"><a [routerLink]="['/detail/movie-detail/'+movie.id]">{{movie.original_title}}</a> :
       {{movie.release_date | date:'MMM-dd,yyyy'}}</h4>
     <div class="block-with-text">
       {{movie.overview}}
@@ -21,7 +21,7 @@
       </li>
     </ul>
     <div class="moreinfo">
-      <a [routerLink]="['/movie-detail/'+movie.id]">More Info</a>
+      <a [routerLink]="['/detail/movie-detail/'+movie.id]">More Info</a>
     </div>
   </div>
 </div>

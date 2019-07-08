@@ -11,7 +11,7 @@ const routes: Routes = [
     loadChildren: './upcoming/upcoming.module#UpcomingModule'
   },
   {
-    path: 'movie-detail/:id',
+    path: 'detail',
     loadChildren: './detail/detail.module#DetailModule'
   },
   {

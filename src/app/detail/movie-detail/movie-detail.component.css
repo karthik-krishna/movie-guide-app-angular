@@ -46,6 +46,7 @@
     width:160px;
     float: left;
     margin:15px 5px;
+    cursor: pointer;
 }
 .imgCast{
     width:80px;

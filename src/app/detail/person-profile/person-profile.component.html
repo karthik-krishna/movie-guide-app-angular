@@ -1,0 +1,64 @@
+<div class="container-fluid ">
+  <div class="bg-image row"></div>
+</div>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body" *ngIf="person">
+      <div class="col-sm-3">
+        <img [src]="base+'/w200/'+person.profile_path" onError="this.src='https://via.placeholder.com/200x300'"
+          alt="{{person.name || ''}}" class="img-thumbnail poster-in-person hidden-xs">
+        <img [src]="base+'/w116_and_h174_face/'+person.profile_path"
+          onError="this.src='https://via.placeholder.com/200x300'" alt="{{person.name || ''}}"
+          class="img-thumbnail poster-in-person visible-xs">
+        <div class="col" style="padding-top:225px">
+          <main *ngIf="castCredits.length>0">
+            <strong>Cast</strong>
+            <p class="creditinfo" *ngFor="let cast of castCredits">
+              <a [routerLink]="['/detail/movie-detail/'+cast.id]"><b>{{cast.title}}</b></a> <span class="text-muted"> as </span> {{cast.character}} in {{cast.release_date}}
+            </p>
+            <br />
+          </main>
+          <main *ngIf="crewCredits.length>0">
+            <strong>Crew</strong>
+            <p class="creditinfo" *ngFor="let crew of crewCredits">
+              <a [routerLink]="['/detail/movie-detail/'+crew.id]"><b>{{crew.title}}</b></a> <span class="text-muted"> as </span> {{crew.job}}
+            </p>
+            <br />
+          </main>
+        </div>
+      </div>
+
+      <div class="col-sm-9 bg-detail">
+        <div class="movie-title">
+          <b>{{person.name || ''}}
+            <br>
+          </b>
+          <b>Also known as:</b>
+          <span *ngFor="let name of person.also_known_as;let i=index">
+            {{name}} <span *ngIf="i <person.name.length-1">, </span>
+          </span>
+        </div>
+
+        <p>{{person.biography || '' }}</p>
+        <div class="text-left">
+          Popularity : {{person.popularity*10}}%
+          <app-progressbar [userScore]="person.popularity"></app-progressbar>
+        </div>
+        <div class="col-sm-12">
+          <ul class="details-in-list">
+            <li><b>Birthday : </b>{{person.birthday}}</li>
+            <li><b>Place of Birth : </b>{{person.place_of_birth}}</li>
+            <li *ngIf="person.deathday"><b>Death day : </b>{{person.deathday || '' }}</li>
+            <li><b>Gender :</b> {{person.gender==1? 'Female' : person.gender==2 ? 'Male' : 'Other'}}
+            </li>
+            <li *ngIf="person.homepage"><b>Home page :</b> {{person.homepage}}</li>
+            <li><b>IMDB profile :</b> <a href="{{'https://www.imdb.com/name/'+person.imdb_id}}"
+                target="_blank">{{'https://www.imdb.com/name/'+person.imdb_id}}</a></li>
+            <li><b>Known for:</b> {{person.known_for_department}}</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

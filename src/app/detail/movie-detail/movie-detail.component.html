@@ -52,11 +52,11 @@
       <div class="col-md-12 mb-2 overflow">
         <h4>Cast</h4>
         <div class="col-md-12 card showinslider">
-          <div class="castDiv text-center" *ngFor="let person of cast">
-            <img [src]="base+'/w92'+person.profile_path" class="imgCast img-circle"
+          <div class="castDiv text-center" *ngFor="let person of cast" [routerLink]="['/detail/person/'+person.id]">
+            <img [src]="base+'/w92/'+person.profile_path" class="imgCast img-circle"
               onError="this.src='https://via.placeholder.com/80x80'" alt="{{person.name || ''}}">
             <div class="col-md-12">
-              <p>{{person.character}}</p>
+              <p><b>{{person.character}}</b></p>
               <p>{{person.name}}</p>
             </div>
           </div>
@@ -64,18 +64,18 @@
       </div>
 
       <div class="col-md-12 mb-2 overflow">
-          <h4>Crew</h4>
-          <div class="col-md-12 card showinslider">
-            <div class="castDiv text-center" *ngFor="let person of crew">
-              <img [src]="base+'/w92'+person.profile_path" class="imgCast img-circle"
-                onError="this.src='https://via.placeholder.com/80x80'" alt="{{person.name || ''}}">
-              <div class="col-md-12">
-                <p>{{person.job}}</p>
-                <p>{{person.name}}</p>
-              </div>
+        <h4>Crew</h4>
+        <div class="col-md-12 card showinslider">
+          <div class="castDiv text-center" *ngFor="let person of crew" [routerLink]="['/detail/person/'+person.id]">
+            <img [src]="base+'/w92/'+person.profile_path" class="imgCast img-circle"
+              onError="this.src='https://via.placeholder.com/80x80'" alt="{{person.name || ''}}">
+            <div class="col-md-12">
+              <p><b>{{person.job}}</b></p>
+              <p>{{person.name}}</p>
             </div>
           </div>
         </div>
+      </div>
 
       <tabset [justified]="true">
         <tab heading="Trailers" id="tab1" (selectTab)="onSelect($event)">
@@ -97,11 +97,7 @@
         <tab heading="Similar Movies" (selectTab)="onSelect($event)">
           <h3 class="heading"></h3>
           <div class="col-sm-3 text-center" *ngFor="let movie of similarMovies">
-            <a [routerLink]="['/movie-detail/'+movie.id]"><img [src]="base+'/w200'+movie.poster_path"
-                class="img-thumbnail" [alt]="movie.original_title">
-              <br>
-              <p></p>
-            </a>
+            <app-image-thumbnail [movie]="movie"></app-image-thumbnail>
           </div>
           <div class="col-sm-12 text-center" *ngIf="similarMovies && similarMovies.length==0">
             <p>None</p>
