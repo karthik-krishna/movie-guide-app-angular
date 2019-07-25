@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9. Angular version is 7.2.15. This application is lazy loaded and the application is split into layout,shared module and feature module. The application uses [TMDB](https://developers.themoviedb.org/3/getting-started/introduction) (The Movie Data Base) apis for the data. Currently has home page with list of all movies playing now and has got search field to search for movies based on title. Another page will list all the upcoming movies and by click on any movie will be re-directed to its detail page where a brief description of the movie and few details related to the movie will be displayed. Below you can also find cast and crew, the trailers related to the movie, reviews and similar movies.
 
+DEMO : https://movie-guide-angular.netlify.com/home
+
 # Features which can be implemented in future.
 * Show recommended movies based on search
 * Rate the movie as a guest user
