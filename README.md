@@ -11,7 +11,6 @@ DEMO : https://movie-guide-angular.netlify.com/home
 * Rate the movie as a guest user
 * Authentication 
 * Display TV shows, add fav shows, latest episodes etc.,
-* implement pagination for reviews and similar movies in movie detail page
 * Can display 6-7 lines of reviews and then can have a read more button which can be re-directed to another page with complete review. There another service call can be made based on review-id
 
 After authentication
