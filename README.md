@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 DEMO : https://movie-guide-angular.netlify.com/home
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/eb6afe27-88ad-4fe4-bebd-e3ce9b038a9c/deploy-status)](https://app.netlify.com/sites/movie-guide-angular/deploys)
+
 # Features which can be implemented in future.
 * Show recommended movies based on search
 * Rate the movie as a guest user
