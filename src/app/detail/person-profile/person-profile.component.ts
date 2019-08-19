@@ -14,6 +14,7 @@ export class PersonProfileComponent implements OnInit {
   personId: string;
   castCredits: any[]=[];
   crewCredits: any[]=[];
+  showErr:boolean=false;
 
   constructor(private baseurl: ApiServiceService,private personService:PersonService, private route:ActivatedRoute) { }
   base=this.baseurl.baseImageURL();
@@ -28,6 +29,8 @@ export class PersonProfileComponent implements OnInit {
       let response = JSON.parse(JSON.stringify(resp))
       if (response != undefined) {
         this.person=JSON.parse(JSON.stringify(response));
+      }else{
+        this.showErr=true;
       }
     })
   }

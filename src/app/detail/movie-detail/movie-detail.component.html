@@ -4,7 +4,7 @@
   <div class="bg-image row visible-xs"
     [style.background-image]="'url('+base+'/w500_and_h282_face'+detail.backdrop_path+')'"></div>
 </div>
-<div class="container">
+<div class="container" *ngIf="!showErr">
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="col-sm-3 text-center">
@@ -106,4 +106,7 @@
       </tabset>
     </div>
   </div>
+</div>
+<div *ngIf="showErr">
+  <p>We are unable to retrieve the "start" page at this time. Please check your connection and try again later.</p>
 </div>

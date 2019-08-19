@@ -22,6 +22,7 @@ export class MovieDetailComponent implements OnInit {
   showReview: boolean;
   cast: any=[];
   crew: any=[];
+  showErr: boolean;
   constructor(private router: Router,private detailService:Detailservice, private route:ActivatedRoute, private sanitizer:DomSanitizer,private baseurl: ApiServiceService) {
     this.movieId=this.route.snapshot.params.id;
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -38,7 +39,7 @@ export class MovieDetailComponent implements OnInit {
     }
     this.getCastandCrew()
   }
-  
+
   getumovieDetail() {
     this.showspinner = true;
     this.detailService.getMovieDetails(this.movieId).subscribe((resp) => {
@@ -51,6 +52,7 @@ export class MovieDetailComponent implements OnInit {
         localStorage.setItem(this.movieId,JSON.stringify(this.detail));
       } else {
         this.showspinner = false;
+        this.showErr=true;
       }
 
     })
@@ -72,7 +74,7 @@ export class MovieDetailComponent implements OnInit {
           this.similarMovies=response.results
         }
       })
-    }    
+    }
   }
 
   getCastandCrew() {
@@ -82,7 +84,7 @@ export class MovieDetailComponent implements OnInit {
           this.cast=response.cast;
           this.crew=response.crew;
         }
-      }) 
+      })
   }
 
   getembededUrl(trailer){

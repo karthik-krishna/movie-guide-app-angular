@@ -1,7 +1,7 @@
 <div class="container-fluid ">
   <div class="bg-image row"></div>
 </div>
-<div class="container">
+<div class="container" *ngIf="!showErr">
   <div class="panel panel-default">
     <div class="panel-body" *ngIf="person">
       <div class="col-sm-3">
@@ -61,4 +61,7 @@
 
     </div>
   </div>
+</div>
+<div *ngIf="showErr">
+  <p>We are unable to retrieve the "start" page at this time. Please check your connection and try again later.</p>
 </div>
